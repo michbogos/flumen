@@ -3,7 +3,8 @@ project(flumen)
 
 # Generate compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
-add_compile_options(-Ofast -march=native )
+set(GRAPHICS GRAPHICS_API_OPENGL_43)
+add_compile_options(-Ofast -march=native -mtune=native -fno-signed-zeros -fno-trapping-math )
 
 # Dependencies
 set(RAYLIB_VERSION 4.5.0)

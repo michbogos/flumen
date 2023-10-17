@@ -121,11 +121,13 @@ int main(void)
     {
         for(int i = 1; i < SUBDIV; i++){
             for(int j = 1; j < SUBDIV; j++){
-                v[IX(i, j)] += 2*(i-SUBDIV/2)*(j-SUBDIV/2)*(j-SUBDIV/2)*0.0001;
-                u[IX(i, j)] += 2*(i-SUBDIV/2)*(j-SUBDIV/2)*(j-SUBDIV/2)*0.0001;
+                if(i != SUBDIV/2 && j != SUBDIV/2){
+                    // u[IX(i, j)] += 10+(u[IX(i, j)]-u_prev[IX(i, j)]);
+                    v[IX(i, j)] += 10+(-v[IX(i, j)]+v_prev[IX(i, j)]);
+                }
             }
         }
-        vel_step (SUBDIV, u, v, u_prev, v_prev, 1, GetFrameTime());
+        vel_step (SUBDIV, u, v, u_prev, v_prev, 10, GetFrameTime());
         dens_step(SUBDIV, dens, dens_prev, u, v, 0.0001, GetFrameTime());
         BeginDrawing();
             ClearBackground(BLACK);
