@@ -127,7 +127,7 @@ int main(void)
                 }
             }
         }
-        vel_step (SUBDIV, u, v, u_prev, v_prev, 10, GetFrameTime());
+        vel_step (SUBDIV, u, v, u_prev, v_prev, 0.1, GetFrameTime());
         dens_step(SUBDIV, dens, dens_prev, u, v, 0.0001, GetFrameTime());
         BeginDrawing();
             ClearBackground(BLACK);
